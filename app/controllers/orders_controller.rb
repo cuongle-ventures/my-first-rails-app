@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
     @orders = Order
       .limit(5)
 
-    render json: { data: @orders.as_json(include: :customer), status: :ok }
+    render json: { data: @orders.as_json(include: [:customer]), status: :ok }
   end
 
   def show
@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       .where(id: params[:id])
       .first
 
-    render json: { data: @order.as_json(include: :customer), status: :ok }
+    render json: { data: @order.as_json(include: [:customer, order_items: { include: [:product] }]), status: :ok }
   end
 
   def create

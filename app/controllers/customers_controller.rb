@@ -18,7 +18,11 @@ class CustomersController < ApplicationController
       return
     end
 
-    render json: { data: @customer, errors: [] }, status: :ok
+    @total_orders = @customer.orders.length
+
+    @top_5_recently_ordered = @customer.orders.order(id: :desc).limit(5).pluck(:id)
+
+    render json: { data: { customer: @customer, total_orders: @total_orders, top_5_recently_ordered: @top_5_recently_ordered }, errors: [] }, status: :ok
   end
 
   def create
