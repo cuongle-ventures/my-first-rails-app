@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_07_033405) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_07_042723) do
   create_table "customers", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_07_033405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "customer_id", null: false
+    t.boolean "soft_delete", default: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
