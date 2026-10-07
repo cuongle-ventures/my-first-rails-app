@@ -1,24 +1,68 @@
-# README
+# My Awesome Project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A small shop API built with Rails. Manages customers and products.
 
-Things you may want to cover:
+## Prerequisites
 
-* Ruby version
+- Ruby 3.4.2
+- Bundler
+- SQLite 3
 
-* System dependencies
+## Setup
 
-* Configuration
+```bash
+bundle install
+bin/rails db:prepare
+```
 
-* Database creation
+## How to run
 
-* Database initialization
+```bash
+bin/rails server
+```
 
-* How to run the test suite
+The app runs at http://localhost:3000. Health check: `GET /up`.
 
-* Services (job queues, cache servers, search engines, etc.)
+Run tests:
 
-* Deployment instructions
+```bash
+bin/rails test
+```
 
-* ...
+## DB schema
+
+**customers**
+
+| Column     | Type     |
+| ---------- | -------- |
+| id         | integer  |
+| first_name | string   |
+| last_name  | string   |
+| active     | boolean  |
+| created_at | datetime |
+| updated_at | datetime |
+
+**products**
+
+| Column      | Type     |
+| ----------- | -------- |
+| id          | integer  |
+| name        | string   |
+| description | string   |
+| created_at  | datetime |
+| updated_at  | datetime |
+
+## Endpoints
+
+| Method | Path             |
+| ------ | ---------------- |
+| GET    | /customers       |
+| GET    | /customers/:id   |
+| POST   | /customers       |
+| PATCH  | /customers/:id   |
+| DELETE | /customers/:id   |
+| GET    | /products        |
+| GET    | /products/:id    |
+| POST   | /products        |
+| PATCH  | /products/:id    |
+| DELETE | /products/:id    |
